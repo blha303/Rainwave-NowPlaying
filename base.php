@@ -51,21 +51,31 @@ $out = sprintf("%s - %s (from %s)",
 # Note to self, ask Rob about this.
 # If no options are provided, returns the regular text version
 if(isset($_GET['callback'])){
+    # Set content type
     header('Content-Type: text/javascript');
+    # Get desired callback name if provided, and sanitize it
     $callback = preg_replace('/\W+/', '', $_GET['callback']); #sanitize
+    # Print data
     print $callback . "window.open('".$songinfo["song_url"]."'); alert(" . json_encode($out) . ");";
 } else if (isset($_GET['shell'])) {
+    # Set content type
     header("Content-Type: text/plain");
+    # Mmm, indentation. Can you tell I'm a Python programmer?
     print "    ".$out."
     ".$songinfo["song_url"];
 } else if (isset($_GET['stream'])) {
+    # Set content type
     header("Content-Type: text/plain");
+    # Today I learned about PHP_EOL.
     echo $out.PHP_EOL;
     echo $songinfo["song_url"]." http://".$site[0].".rainwave.cc/";
 } else if (isset($_GET['json'])) {
+    # Possibly bad. Need to talk with Rainwave people about this.
     header("Content-Type: application/json");
     echo json_encode($songinfo);
 } else {
+    # Set content type
     header("Content-Type: text/plain");
+    # Print the info.
     print $out." ".$songinfo["song_url"];
 }
