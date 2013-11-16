@@ -40,7 +40,7 @@ if(isset($_GET['callback'])){
     ".$songinfo["song_url"];
 } else if (isset($_GET['stream'])) {
     header("Content-Type: text/plain"); ?>
-<?php echo $out; ?>
+<?php echo $out.PHP_EOL; ?>
 <?php echo $songinfo["song_url"]; ?> http://<?php echo $site[0]; ?>.rainwave.cc/<?php
 } else {
     header("Content-Type: text/plain");
