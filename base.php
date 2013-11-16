@@ -34,8 +34,15 @@ if(isset($_GET['callback'])){
     header('Content-Type: text/javascript');
     $callback = preg_replace('/\W+/', '', $_GET['callback']); #sanitize
     print $callback . "window.open('".$songinfo["song_url"]."'); alert(" . json_encode($out) . ");";
+} else if (isset($_GET['shell'])) {
+    header("Content-Type: text/plain");
+    print "    ".$out."
+    ".$songinfo["song_url"];
+} else if (isset($_GET['stream'])) {
+    header("Content-Type: text/plain");
+    print "    ".$out."
+    ".$songinfo["song_url"]." http://".$site[0].".rainwave.cc/";
 } else {
     header("Content-Type: text/plain");
     print $out." ".$songinfo["song_url"];
 }
-
