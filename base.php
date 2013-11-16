@@ -88,7 +88,7 @@ if(isset($_GET['callback'])){
     # Don't need to set the header, text/html is just fine
     echo "
 <style>
-a { text-decoration: none; text-color: ".$linkcolor." } body { background-color: ".$bgcolor." }
+a { text-decoration: none; color: ".$linkcolor." } body { background-color: ".$bgcolor." }
 </style>
 <center>
     <a href='".$songinfo["song_url"]."'>
