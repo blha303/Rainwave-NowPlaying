@@ -49,6 +49,7 @@ $out = sprintf("%s - %s (from %s)",
 # and ?stream for putting in your stream. example: http://b3.lc.pe/Rybl.jpg (top left)
 # NEW: ?json. Returns song info in json form, same as how I got it, except without needing an API key.
 # Note to self, ask Rob about this.
+# NEW: ?html. Returns html box you can use in an iframe.
 # If no options are provided, returns the regular text version
 if(isset($_GET['callback'])){
     # Set content type
@@ -73,6 +74,15 @@ if(isset($_GET['callback'])){
     # Possibly bad. Need to talk with Rainwave people about this.
     header("Content-Type: application/json");
     echo json_encode($songinfo);
+} else if (isset($_GET['frame'])) {
+    # Don't need to set the header, text/html is just fine
+    echo "<center>
+    <a href='".$songinfo["song_url"]."'>
+        <img src='http://".$site[0].".rainwave.cc".$songinfo["album_art"]."' align='top' width='75%'>
+    </a><br>
+    <b>".implode(", ", $artists)."</b> - <b>".$songinfo["song_title"]."</b><br>
+    <i>(from ".$songinfo["album_name"].")</i>
+</center>";
 } else {
     # Set content type
     header("Content-Type: text/plain");
