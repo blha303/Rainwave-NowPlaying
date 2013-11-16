@@ -87,10 +87,10 @@ a { text-decoration: none; } body { background-color: ".$bgcolor." }
 </style>
 <center>
     <a href='".$songinfo["song_url"]."'>
-        <img src='http://".$site[0].".rainwave.cc".$songinfo["album_art"]."' align='top' width='75%'>
-    </a><br>
-    <b>".implode(", ", $artists)."</b> - <b>".$songinfo["song_title"]."</b><br>
-    <i>(from ".$songinfo["album_name"].")</i>
+        <img src='http://".$site[0].".rainwave.cc".$songinfo["album_art"]."' align='top' width='75%'><br>
+        <b>".implode(", ", $artists)."</b> - <b>".$songinfo["song_title"]."</b><br>
+        <i>(from ".$songinfo["album_name"].")</i>
+    </a>
 </center>";
 } else {
     # Set content type
