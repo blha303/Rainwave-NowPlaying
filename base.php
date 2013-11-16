@@ -49,7 +49,7 @@ $out = sprintf("%s - %s (from %s)",
 # and ?stream for putting in your stream. example: http://b3.lc.pe/Rybl.jpg (top left)
 # NEW: ?json. Returns song info in json form, same as how I got it, except without needing an API key.
 # Note to self, ask Rob about this.
-# NEW: ?frame. Returns html box you can use in an iframe.
+# NEW: ?frame. Returns html box you can use in an iframe. Params for this: &bgcolor=color, &linkcolor=color
 # If no options are provided, returns the regular text version
 if(isset($_GET['callback'])){
     # Set content type
@@ -80,10 +80,15 @@ if(isset($_GET['callback'])){
     } else {
         $bgcolor = "#fff";
     }
+    if (isset($_GET['linkcolor'])) {
+        $linkcolor = preg_replace('/\W+/', '', $_GET['linkcolor']);
+    } else {
+        $linkcolor = "default";
+    }
     # Don't need to set the header, text/html is just fine
     echo "
 <style>
-a { text-decoration: none; } body { background-color: ".$bgcolor." }
+a { text-decoration: none; text-color: ".$linkcolor." } body { background-color: ".$bgcolor." }
 </style>
 <center>
     <a href='".$songinfo["song_url"]."'>
