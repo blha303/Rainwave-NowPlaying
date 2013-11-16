@@ -45,6 +45,10 @@ $out = sprintf("%s - %s (from %s)",
                $songinfo["song_title"],
                $songinfo["album_name"]);
 
+if ($songinfo["song_url"] == "") {
+    $songinfo["song_url"] = "http://".$site[0].".rainwave.cc";
+}
+
 # Options: ?callback for javascript, ?shell for my raspberry pi running on a TV with a heap of overscan,
 # and ?stream for putting in your stream. example: http://b3.lc.pe/Rybl.jpg (top left)
 # NEW: ?json. Returns song info in json form, same as how I got it, except without needing an API key.
