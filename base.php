@@ -90,7 +90,9 @@ if(isset($_GET['callback'])){
         $linkcolor = "default";
     }
     # Don't need to set the header, text/html is just fine
-    echo "
+    echo "<html>
+<head><meta http-equiv=\"refresh\" content=\"10\"></head>
+<body>
 <style>
 a { text-decoration: none; color: ".$linkcolor." }
 body { background-color: ".$bgcolor." }
@@ -102,7 +104,9 @@ img { max-width: 75%; max-height: 80% }
         <b>".implode(", ", $artists)."</b> - <b>".$songinfo["song_title"]."</b><br>
         <i>(from ".$songinfo["album_name"].")</i>
     </a>
-</center>";
+</center>
+</body>
+</html>";
 } else {
     # Set content type
     header("Content-Type: text/plain");
