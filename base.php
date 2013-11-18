@@ -97,7 +97,7 @@ body { background-color: ".$bgcolor." }
 img { max-width: 75%; max-height: 80% }
 </style>
 <center>
-    <a href='".$songinfo["song_url"]."'>
+    <a href='".$songinfo["song_url"]."' target='_blank'>
         <img src='http://".$site[0].".rainwave.cc".$songinfo["album_art"]."' align='top' width='75%'><br>
         <b>".implode(", ", $artists)."</b> - <b>".$songinfo["song_title"]."</b><br>
         <i>(from ".$songinfo["album_name"].")</i>
