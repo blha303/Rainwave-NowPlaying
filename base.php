@@ -8,29 +8,7 @@ if (!isset($site)) {
 # This script is called from bookmarklets.
 header("Access-Control-Allow-Origin: *");
 
-# Get anonymous API key. TODO: Use registered api key
-$pagecontent = file_get_contents("http://".$site[0].".rainwave.cc/");
-preg_match_all("/PRELOADED_APIKEY = '(.*?)'/", $pagecontent, $matches);
-
-# Build POST request. PHP be trippin.
-$url = "http://".$site[0].".rainwave.cc/sync/".$site[1]."/init";
-$data = array('refresh' => 'full',
-              'user_id' => '1',
-              'key' => $matches[1][0],
-              'in_order' => 'true');
-$options = array(
-    'http' => array(
-        'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
-        'method'  => 'POST',
-        'content' => http_build_query($data),
-    ),
-);
-$context  = stream_context_create($options);
-
-# Get data
-$result = json_decode(file_get_contents($url, false, $context), true);
-# Get song info from data
-$songinfo = $result[3]["sched_current"]["song_data"][0];
+$songinfo = json_decode(file_get_contents(realpath(dirname(__FILE__)) . "/" . $site[0] . ".json"), true);
 
 # To print artists nicely if there's more than one.
 # I don't know if this is necessary, but songinfo returns a list of artists.
