@@ -16,6 +16,6 @@ $sites = array("all", "chiptune", "cover", "game", "ocr");
 <li><a href="<?php echo $site; ?>/?callback">Javascript for bookmarklets</a></li>
 <li><a href="<?php echo $site; ?>/?stream">Track info with attribution, for livestreams</a></li>
 <li><a href="<?php echo $site; ?>.json">JSON info</a> (or <a href="<?php echo $site; ?>/?json">here</a>, but this is slower)</li>
-<li><a href="<?php echo $site; ?>/?frame">IFrame-compatible song/album art display (use &amp;linkcolor and &amp;bgcolor to set colors for your site)</a></li>
+<li><a href="<?php echo $site; ?>/?frame">IFrame-compatible song/album art display</a> (use &amp;linkcolor and &amp;bgcolor to set colors for your site)</li>
 </ul>
 <?php } ?>
